@@ -41,5 +41,6 @@
   },
   "resolutions": {
     "react-dev-utils": "^10.2.1"
-  }
+  },
+  "homepage": "http://127.0.0.1/back-trader"
 }

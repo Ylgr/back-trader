@@ -2,6 +2,7 @@ import './App.css';
 import CandlestickChart from './components/Chart'
 import api from './api/api'
 import React from "react";
+import {balanceBeforeTrade} from "./utils/constants";
 import {symbolList, intervalList} from "./utils/constants";
 import {
     Col,
@@ -29,7 +30,10 @@ class App extends React.Component {
             stopLossPercent: null,
             takeProfitPercent: null,
             isAutoReEntry: false,
-            analysisLog: []
+            analysisLog: [],
+            totalStopLoss: 0,
+            totalTakeProfit: 0,
+            balance: balanceBeforeTrade
         }
     }
 
@@ -86,7 +90,6 @@ class App extends React.Component {
     analysisLogging(newData) {
         const dataLog = this.state.analysisLog
         dataLog.push(newData)
-        console.log('dataLog: ', dataLog)
         this.setState({analysisLog: dataLog})
     }
 
@@ -95,6 +98,10 @@ class App extends React.Component {
             const entry = parseFloat(takeProfitPrice)
             analysisData.push({x: candle.x, y: entry, indexLabel: 'tp',markerColor: 'green', markerType: 'triangle' })
             this.analysisLogging(`${candle.x}: Take profit at price ${entry}.`)
+            this.setState({
+                totalTakeProfit: this.state.totalTakeProfit + 1,
+                balance: this.state.balance*(1+this.state.takeProfitPercent/100)
+            })
             return {
                 waitEntry, analysisData, stopLossPrice: null, takeProfitPrice: null
             }
@@ -103,12 +110,18 @@ class App extends React.Component {
             const entry = parseFloat(stopLossPrice)
             analysisData.push({x: candle.x, y: entry, indexLabel: 'sl',markerColor: 'red', markerType: 'cross' })
             this.analysisLogging(`${candle.x}: Stop loss at price ${entry}.`)
+            this.setState({
+                totalStopLoss: this.state.totalStopLoss + 1,
+                balance: this.state.balance*(1-this.state.stopLossPercent/100)
+            })
+            let isNextCandle = false
             if(this.state.isAutoReEntry) {
                 const flow = this.state.position === 'LONG' ? 1 : -1
-                waitEntry = waitEntry*(1 - flow*this.state.rangePercent/100)
+                waitEntry = waitEntry/(1 + flow*this.state.rangePercent/100)
+                isNextCandle = true
             }
             return {
-                waitEntry, analysisData, stopLossPrice: null, takeProfitPrice: null
+                waitEntry, analysisData, stopLossPrice: null, takeProfitPrice: null, isNextCandle
             }
         }
         return {
@@ -120,7 +133,8 @@ class App extends React.Component {
         const slAndTpResult = this.tpAndSlProcess(candle, waitEntry, analysisData, stopLossPrice, takeProfitPrice)
         analysisData = slAndTpResult.analysisData
         waitEntry = slAndTpResult.waitEntry
-        if(this.isInRange(waitEntry, candle)) {
+        const isNextCandle = slAndTpResult.isNextCandle
+        if(this.isInRange(waitEntry, candle) && !isNextCandle) {
             const entry = parseFloat(waitEntry)
             analysisData.push({x: candle.x, y: entry, indexLabel: 'entry',markerColor: 'blue', markerType: 'circle' })
             this.analysisLogging(`${candle.x}: Entry at price ${entry}.`)
@@ -139,19 +153,24 @@ class App extends React.Component {
         }
     }
 
-    processAnalysis() {
+    processAnalysis(event) {
+        event.preventDefault()
         this.setState({
             analysisData: [],
-            analysisLog: []
+            analysisLog: [],
+            totalStopLoss: 0,
+            totalTakeProfit: 0,
+            balance: balanceBeforeTrade,
+        },function(){
+            let waitEntry = this.state.firstEntry
+            let analysisData = []
+            this.state.klineData.forEach(candle => {
+                const result = this.entryProcess(waitEntry, candle, analysisData)
+                waitEntry = result.waitEntry
+                analysisData = result.analysisData
+            })
+            this.setState({analysisData: analysisData})
         })
-        let waitEntry = this.state.firstEntry
-        let analysisData = []
-        this.state.klineData.forEach(candle => {
-            const result = this.entryProcess(waitEntry, candle, analysisData)
-            waitEntry = result.waitEntry
-            analysisData = result.analysisData
-        })
-        this.setState({analysisData: analysisData})
     }
     render() {
         return (
@@ -211,17 +230,29 @@ class App extends React.Component {
                         <Row>
                             <Input name="isAutoReEntry" type="checkbox"
                                    defaultChecked={this.state.isAutoReEntry}
-                                   onChange={(e) => this.handleChangeCheckBox(e)} disabled/>{' '}
+                                   onChange={(e) => this.handleChangeCheckBox(e)} />{' '}
                             Auto re-entry after stop loss
                         </Row>
                         <Row>
-                            <Button onClick={() => this.processAnalysis()}>Analysis</Button>
+                            <Button onClick={(event) => this.processAnalysis(event)}>Analysis</Button>
                         </Row>
                     </Col>
                 </Row>
-                <Row>
-                    {this.state.analysisLog.map(e => <p>{e}</p>)}
-                </Row>
+                <div className="container">
+                    <Row>
+                        <Col md="8">
+                            <h4>Logs:</h4>
+                            {this.state.analysisLog.map(e => <p>{e}</p>)}
+                        </Col>
+                        <Col md="4">
+                            {/*<h4>Result:</h4>*/}
+                            {/*<p>Total profit: {this.state.totalTakeProfit} orders</p>*/}
+                            {/*<p>Total loss: {this.state.totalStopLoss} orders</p>*/}
+                            {/*<p>Balance (before trade): {balanceBeforeTrade} USDT</p>*/}
+                            {/*<p>Balance (after trade + all in): {balanceBeforeTrade} USDT</p>*/}
+                        </Col>
+                    </Row>
+                </div>
             </div>
         );
     }

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56cd810c-4d72-467c-a66d-c3a1e7b0953e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607490642770</updated>
-      <workItem from="1607490644827" duration="20620000" />
+      <workItem from="1607490644827" duration="24788000" />
     </task>
     <task id="LOCAL-00001" summary="(+) backtrader Init chart">
       <created>1607500401121</created>
@@ -98,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607517785687</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="(+) add port">
+      <created>1607519298312</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607519298312</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,41 +121,42 @@
     <MESSAGE value="(+) add assets" />
     <MESSAGE value="(+) add resolutions" />
     <MESSAGE value="(+) add homepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="(+) add homepage" />
+    <MESSAGE value="(+) add port" />
+    <option name="LAST_COMMIT_MESSAGE" value="(+) add port" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607517785585">
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607519298219">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607517785585" />
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607519298219" />
     <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1607501287944">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
     <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl/49.27.1317.741@49.27.1317.741" timestamp="1607501287944" />
-    <state width="1294" height="175" key="GridCell.Tab.0.bottom" timestamp="1607519284456">
+    <state width="1294" height="175" key="GridCell.Tab.0.bottom" timestamp="1607522413155">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.bottom/49.27.1317.741@49.27.1317.741" timestamp="1607519284456" />
-    <state width="1294" height="175" key="GridCell.Tab.0.center" timestamp="1607519284455">
+    <state width="1294" height="175" key="GridCell.Tab.0.bottom/49.27.1317.741@49.27.1317.741" timestamp="1607522413155" />
+    <state width="1294" height="175" key="GridCell.Tab.0.center" timestamp="1607522413155">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.center/49.27.1317.741@49.27.1317.741" timestamp="1607519284455" />
-    <state width="1294" height="175" key="GridCell.Tab.0.left" timestamp="1607519284455">
+    <state width="1294" height="175" key="GridCell.Tab.0.center/49.27.1317.741@49.27.1317.741" timestamp="1607522413155" />
+    <state width="1294" height="175" key="GridCell.Tab.0.left" timestamp="1607522413154">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.left/49.27.1317.741@49.27.1317.741" timestamp="1607519284455" />
-    <state width="1294" height="175" key="GridCell.Tab.0.right" timestamp="1607519284456">
+    <state width="1294" height="175" key="GridCell.Tab.0.left/49.27.1317.741@49.27.1317.741" timestamp="1607522413154" />
+    <state width="1294" height="175" key="GridCell.Tab.0.right" timestamp="1607522413155">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.right/49.27.1317.741@49.27.1317.741" timestamp="1607519284456" />
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607517786639">
+    <state width="1294" height="175" key="GridCell.Tab.0.right/49.27.1317.741@49.27.1317.741" timestamp="1607522413155" />
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607519299443">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607517786639" />
-    <state x="355" y="108" width="704" height="576" key="find.popup" timestamp="1607510258440">
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607519299443" />
+    <state x="355" y="108" width="704" height="576" key="find.popup" timestamp="1607521927845">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="355" y="108" width="704" height="576" key="find.popup/49.27.1317.741@49.27.1317.741" timestamp="1607510258440" />
+    <state x="355" y="108" width="704" height="576" key="find.popup/49.27.1317.741@49.27.1317.741" timestamp="1607521927845" />
     <state x="370" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1607499162590">
       <screen x="49" y="27" width="1317" height="741" />
     </state>

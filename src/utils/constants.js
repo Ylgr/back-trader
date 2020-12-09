@@ -28,3 +28,5 @@ export const intervalList = [
     '1w',
     '1M',
 ]
+
+export const balanceBeforeTrade = 1000

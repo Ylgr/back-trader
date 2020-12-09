@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56cd810c-4d72-467c-a66d-c3a1e7b0953e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/ajax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
+    <list default="true" id="56cd810c-4d72-467c-a66d-c3a1e7b0953e" name="Default Changelist" comment="(+) backtrader Init chart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,18 +64,35 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607490642770</updated>
-      <workItem from="1607490644827" duration="8229000" />
+      <workItem from="1607490644827" duration="15748000" />
     </task>
+    <task id="LOCAL-00001" summary="(+) backtrader Init chart">
+      <created>1607500401121</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607500401121</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="(+) backtrader chart" />
+    <MESSAGE value="(+) backtrader Init chart" />
+    <option name="LAST_COMMIT_MESSAGE" value="(+) backtrader Init chart" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607500335294">
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607510091272">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607500335294" />
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607510091272" />
+    <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1607501287944">
+      <screen x="49" y="27" width="1317" height="741" />
+    </state>
+    <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl/49.27.1317.741@49.27.1317.741" timestamp="1607501287944" />
     <state width="1294" height="175" key="GridCell.Tab.0.bottom" timestamp="1607493520037">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
@@ -99,6 +109,14 @@
       <screen x="49" y="27" width="1317" height="741" />
     </state>
     <state width="1294" height="175" key="GridCell.Tab.0.right/49.27.1317.741@49.27.1317.741" timestamp="1607493520037" />
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607500402580">
+      <screen x="49" y="27" width="1317" height="741" />
+    </state>
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607500402580" />
+    <state x="355" y="108" width="704" height="576" key="find.popup" timestamp="1607510111634">
+      <screen x="49" y="27" width="1317" height="741" />
+    </state>
+    <state x="355" y="108" width="704" height="576" key="find.popup/49.27.1317.741@49.27.1317.741" timestamp="1607510111634" />
     <state x="370" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1607499162590">
       <screen x="49" y="27" width="1317" height="741" />
     </state>

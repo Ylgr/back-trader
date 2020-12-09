@@ -22,15 +22,20 @@ class CandlestickChart extends Component {
             data: [{
                 type: "candlestick",
                 showInLegend: true,
+                indexLabelFontSize: 16,
                 name: this.props.klineName,
                 yValueFormatString: "$###0.00",
                 xValueFormatString: "MMMM YY",
                 dataPoints: this.props.klineData
+            },{
+                type: "line",
+                indexLabelFontSize: 10,
+                dataPoints: this.props.analysisData
             }]
         }
         return (
             <div>
-                <h1>Phiêu Vũ Môn Back trade</h1>
+                <h1>Toái Nguyệt Back Trade</h1>
                 <CanvasJSChart options = {options}
                     onRef={ref => this.chart = ref}
                 />

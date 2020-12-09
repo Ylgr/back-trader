@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56cd810c-4d72-467c-a66d-c3a1e7b0953e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/canvasjs.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/canvasjs.react.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +63,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607490642770</updated>
-      <workItem from="1607490644827" duration="17080000" />
+      <workItem from="1607490644827" duration="18799000" />
     </task>
     <task id="LOCAL-00001" summary="(+) backtrader Init chart">
       <created>1607500401121</created>
@@ -80,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607510151623</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="(+) add assets">
+      <created>1607511574109</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607511574109</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,37 +96,38 @@
     <MESSAGE value="(+) backtrader chart" />
     <MESSAGE value="(+) backtrader Init chart" />
     <MESSAGE value="(+) backtrader v0.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="(+) backtrader v0.2" />
+    <MESSAGE value="(+) add assets" />
+    <option name="LAST_COMMIT_MESSAGE" value="(+) add assets" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607510151533">
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607511573999">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607510151533" />
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607511573999" />
     <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1607501287944">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
     <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl/49.27.1317.741@49.27.1317.741" timestamp="1607501287944" />
-    <state width="1294" height="175" key="GridCell.Tab.0.bottom" timestamp="1607511115222">
+    <state width="1294" height="175" key="GridCell.Tab.0.bottom" timestamp="1607512713783">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.bottom/49.27.1317.741@49.27.1317.741" timestamp="1607511115222" />
-    <state width="1294" height="175" key="GridCell.Tab.0.center" timestamp="1607511115221">
+    <state width="1294" height="175" key="GridCell.Tab.0.bottom/49.27.1317.741@49.27.1317.741" timestamp="1607512713783" />
+    <state width="1294" height="175" key="GridCell.Tab.0.center" timestamp="1607512713782">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.center/49.27.1317.741@49.27.1317.741" timestamp="1607511115221" />
-    <state width="1294" height="175" key="GridCell.Tab.0.left" timestamp="1607511115220">
+    <state width="1294" height="175" key="GridCell.Tab.0.center/49.27.1317.741@49.27.1317.741" timestamp="1607512713782" />
+    <state width="1294" height="175" key="GridCell.Tab.0.left" timestamp="1607512713782">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.left/49.27.1317.741@49.27.1317.741" timestamp="1607511115220" />
-    <state width="1294" height="175" key="GridCell.Tab.0.right" timestamp="1607511115221">
+    <state width="1294" height="175" key="GridCell.Tab.0.left/49.27.1317.741@49.27.1317.741" timestamp="1607512713782" />
+    <state width="1294" height="175" key="GridCell.Tab.0.right" timestamp="1607512713783">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state width="1294" height="175" key="GridCell.Tab.0.right/49.27.1317.741@49.27.1317.741" timestamp="1607511115221" />
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607510152725">
+    <state width="1294" height="175" key="GridCell.Tab.0.right/49.27.1317.741@49.27.1317.741" timestamp="1607512713783" />
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607511575054">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607510152725" />
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607511575054" />
     <state x="355" y="108" width="704" height="576" key="find.popup" timestamp="1607510258440">
       <screen x="49" y="27" width="1317" height="741" />
     </state>

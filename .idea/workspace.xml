@@ -4,8 +4,8 @@
     <list default="true" id="56cd810c-4d72-467c-a66d-c3a1e7b0953e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1lPF6NS3bgKiHpNPHZTUgBTfFU9" />
@@ -64,7 +69,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607490642770</updated>
-      <workItem from="1607490644827" duration="24788000" />
+      <workItem from="1607490644827" duration="25456000" />
+      <workItem from="1607844350208" duration="26000" />
+      <workItem from="1608181475796" duration="256000" />
     </task>
     <task id="LOCAL-00001" summary="(+) backtrader Init chart">
       <created>1607500401121</created>
@@ -108,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607519298312</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="(+) add auto re-entry">
+      <created>1607523471857</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607523471857</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,13 +136,14 @@
     <MESSAGE value="(+) add resolutions" />
     <MESSAGE value="(+) add homepage" />
     <MESSAGE value="(+) add port" />
-    <option name="LAST_COMMIT_MESSAGE" value="(+) add port" />
+    <MESSAGE value="(+) add auto re-entry" />
+    <option name="LAST_COMMIT_MESSAGE" value="(+) add auto re-entry" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607519298219">
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607523471770">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607519298219" />
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607523471770" />
     <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1607501287944">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
@@ -149,10 +164,10 @@
       <screen x="49" y="27" width="1317" height="741" />
     </state>
     <state width="1294" height="175" key="GridCell.Tab.0.right/49.27.1317.741@49.27.1317.741" timestamp="1607522413155" />
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607519299443">
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607523473594">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607519299443" />
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607523473594" />
     <state x="355" y="108" width="704" height="576" key="find.popup" timestamp="1607521927845">
       <screen x="49" y="27" width="1317" height="741" />
     </state>

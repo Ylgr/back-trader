@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/back-trader/static/css/main.ab7136cd.chunk.css",
+    "main.js": "/back-trader/static/js/main.5dc1c275.chunk.js",
+    "main.js.map": "/back-trader/static/js/main.5dc1c275.chunk.js.map",
+    "runtime-main.js": "/back-trader/static/js/runtime-main.caaa04f1.js",
+    "runtime-main.js.map": "/back-trader/static/js/runtime-main.caaa04f1.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/back-trader/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.98d8f828.chunk.js": "/back-trader/static/js/2.98d8f828.chunk.js",
+    "static/js/2.98d8f828.chunk.js.map": "/back-trader/static/js/2.98d8f828.chunk.js.map",
+    "static/js/3.45d777b2.chunk.js": "/back-trader/static/js/3.45d777b2.chunk.js",
+    "static/js/3.45d777b2.chunk.js.map": "/back-trader/static/js/3.45d777b2.chunk.js.map",
+    "index.html": "/back-trader/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/back-trader/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.ab7136cd.chunk.css.map": "/back-trader/static/css/main.ab7136cd.chunk.css.map",
+    "static/js/2.98d8f828.chunk.js.LICENSE.txt": "/back-trader/static/js/2.98d8f828.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.caaa04f1.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.98d8f828.chunk.js",
+    "static/css/main.ab7136cd.chunk.css",
+    "static/js/main.5dc1c275.chunk.js"
+  ]
+}

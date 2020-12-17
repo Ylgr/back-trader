@@ -26,6 +26,8 @@ class CandlestickChart extends Component {
                 name: this.props.klineName,
                 yValueFormatString: "$###0.00",
                 xValueFormatString: "MMMM YY",
+                risingColor: "green",
+                fallingColor: "red",
                 dataPoints: this.props.klineData
             },{
                 type: "line",

@@ -2,6 +2,7 @@ import './App.css';
 import CandlestickChart from './components/Chart'
 import api from './api/api'
 import React from "react";
+import Download from "./components/Download";
 import {balanceBeforeTrade} from "./utils/constants";
 import {symbolList, intervalList} from "./utils/constants";
 import {
@@ -236,6 +237,14 @@ class App extends React.Component {
                         <Row>
                             <Button onClick={(event) => this.processAnalysis(event)}>Analysis</Button>
                         </Row>
+                        {this.state.analysisData.length && <Row>
+                            <Download
+                                klineName={`${this.state.symbol} - ${this.state.interval}`}
+                                analysisData={this.state.analysisData}
+                                stopLossPercent={this.state.stopLossPercent}
+                                takeProfitPercent={this.state.takeProfitPercent}
+                            />
+                        </Row>}
                     </Col>
                 </Row>
                 <div className="container">

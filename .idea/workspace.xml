@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56cd810c-4d72-467c-a66d-c3a1e7b0953e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+    <list default="true" id="56cd810c-4d72-467c-a66d-c3a1e7b0953e" name="Default Changelist" comment="(+) add github page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +69,7 @@
       <updated>1607490642770</updated>
       <workItem from="1607490644827" duration="25456000" />
       <workItem from="1607844350208" duration="26000" />
-      <workItem from="1608181475796" duration="256000" />
+      <workItem from="1608181475796" duration="499000" />
     </task>
     <task id="LOCAL-00001" summary="(+) backtrader Init chart">
       <created>1607500401121</created>
@@ -122,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607523471857</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="(+) add github page">
+      <created>1608181838976</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608181838976</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,13 +142,14 @@
     <MESSAGE value="(+) add homepage" />
     <MESSAGE value="(+) add port" />
     <MESSAGE value="(+) add auto re-entry" />
-    <option name="LAST_COMMIT_MESSAGE" value="(+) add auto re-entry" />
+    <MESSAGE value="(+) add github page" />
+    <option name="LAST_COMMIT_MESSAGE" value="(+) add github page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1607523471770">
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2" timestamp="1608181943802">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1607523471770" />
+    <state x="270" y="27" width="865" height="741" key="CommitChangelistDialog2/49.27.1317.741@49.27.1317.741" timestamp="1608181943802" />
     <state x="490" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1607501287944">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
@@ -164,10 +170,10 @@
       <screen x="49" y="27" width="1317" height="741" />
     </state>
     <state width="1294" height="175" key="GridCell.Tab.0.right/49.27.1317.741@49.27.1317.741" timestamp="1607522413155" />
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607523473594">
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1608181841490">
       <screen x="49" y="27" width="1317" height="741" />
     </state>
-    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1607523473594" />
+    <state x="302" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1317.741@49.27.1317.741" timestamp="1608181841490" />
     <state x="355" y="108" width="704" height="576" key="find.popup" timestamp="1607521927845">
       <screen x="49" y="27" width="1317" height="741" />
     </state>

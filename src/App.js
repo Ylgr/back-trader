@@ -175,9 +175,9 @@ class App extends React.Component {
     tdSequentialEntry(candle, analysisData, currentOrder) {
         if(candle.indexLabel === this.state.entrySequential.toString()) {
             const entry = parseFloat(candle.y[0])
+            const flow = candle.markerColor === 'red' ? 1 : -1
             analysisData.push({x: candle.x, y: entry, indexLabel: 'entry',markerColor: 'blue', markerType: 'circle' })
-            this.analysisLogging(`${candle.x}: Entry at price ${entry}.`)
-            const flow = this.state.position === 'LONG' ? 1 : -1
+            this.analysisLogging(`${candle.x}: --${flow === 1 ? 'LONG' : 'SHORT'}-- Entry at price ${entry}.`)
             currentOrder = {
                 isActive: true,
                 takeProfitPrice:entry*(1 + flow*this.state.takeProfitPercent/100),

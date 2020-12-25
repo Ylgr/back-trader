@@ -3,15 +3,18 @@ import CandlestickChart from './components/Chart'
 import api from './api/api'
 import React from "react";
 import Download from "./components/Download";
-import {balanceBeforeTrade} from "./utils/constants";
+import {balanceBeforeTrade, tradeMode} from "./utils/constants";
 import {symbolList, intervalList} from "./utils/constants";
 import {
     Col,
     Row,
     Input,
     Label,
-    Button
+    Button,
+    ButtonGroup
 } from 'reactstrap'
+
+import TDSequential from 'tdsequential';
 
 class App extends React.Component {
     constructor(props) {
@@ -34,7 +37,10 @@ class App extends React.Component {
             analysisLog: [],
             totalStopLoss: 0,
             totalTakeProfit: 0,
-            balance: balanceBeforeTrade
+            balance: balanceBeforeTrade,
+            tradeMode: tradeMode.scaling,
+            entrySequential: 9,
+            tdSequentialData: [],
         }
     }
 
@@ -95,14 +101,11 @@ class App extends React.Component {
     }
 
     tpAndSlProcess(candle, waitEntry, analysisData, stopLossPrice = null, takeProfitPrice = null) {
+        let isNextCandle = false
         if(takeProfitPrice && this.isInRange(takeProfitPrice, candle)) {
             const entry = parseFloat(takeProfitPrice)
             analysisData.push({x: candle.x, y: entry, indexLabel: 'tp',markerColor: 'green', markerType: 'triangle' })
             this.analysisLogging(`${candle.x}: Take profit at price ${entry}.`)
-            this.setState({
-                totalTakeProfit: this.state.totalTakeProfit + 1,
-                balance: this.state.balance*(1+this.state.takeProfitPercent/100)
-            })
             return {
                 waitEntry, analysisData, stopLossPrice: null, takeProfitPrice: null
             }
@@ -111,11 +114,6 @@ class App extends React.Component {
             const entry = parseFloat(stopLossPrice)
             analysisData.push({x: candle.x, y: entry, indexLabel: 'sl',markerColor: 'red', markerType: 'cross' })
             this.analysisLogging(`${candle.x}: Stop loss at price ${entry}.`)
-            this.setState({
-                totalStopLoss: this.state.totalStopLoss + 1,
-                balance: this.state.balance*(1-this.state.stopLossPercent/100)
-            })
-            let isNextCandle = false
             if(this.state.isAutoReEntry) {
                 const flow = this.state.position === 'LONG' ? 1 : -1
                 waitEntry = waitEntry/(1 + flow*this.state.rangePercent/100)
@@ -154,6 +152,47 @@ class App extends React.Component {
         }
     }
 
+    checkSlOrTp(candle, analysisData, currentOrder) {
+        if(currentOrder.isActive) {
+            if(this.isInRange(currentOrder.stopLossPrice, candle)) {
+                const entry = currentOrder.stopLossPrice
+                analysisData.push({x: candle.x, y: entry, indexLabel: 'sl',markerColor: 'red', markerType: 'cross' })
+                this.analysisLogging(`${candle.x}: Stop loss at price ${entry}.`)
+                currentOrder = {isActive:false}
+            } else if (this.isInRange(currentOrder.takeProfitPrice, candle)) {
+                const entry = currentOrder.takeProfitPrice
+                analysisData.push({x: candle.x, y: entry, indexLabel: 'tp',markerColor: 'green', markerType: 'triangle' })
+                this.analysisLogging(`${candle.x}: Take profit at price ${entry}.`)
+                currentOrder = {isActive:false}
+            }
+        }
+        return {
+            analysisData,
+            currentOrder
+        }
+    }
+
+    tdSequentialEntry(candle, analysisData, currentOrder) {
+        if(candle.indexLabel === this.state.entrySequential.toString()) {
+            const entry = parseFloat(candle.y[0])
+            analysisData.push({x: candle.x, y: entry, indexLabel: 'entry',markerColor: 'blue', markerType: 'circle' })
+            this.analysisLogging(`${candle.x}: Entry at price ${entry}.`)
+            const flow = this.state.position === 'LONG' ? 1 : -1
+            currentOrder = {
+                isActive: true,
+                takeProfitPrice:entry*(1 + flow*this.state.takeProfitPercent/100),
+                stopLossPrice: entry*(1 - flow*this.state.stopLossPercent/100)
+            }
+        }
+        const slAndTpResult = this.checkSlOrTp(candle, analysisData, currentOrder)
+        analysisData = slAndTpResult.analysisData
+        currentOrder = slAndTpResult.currentOrder
+        return {
+            analysisData,
+            currentOrder
+        }
+    }
+
     processAnalysis(event) {
         event.preventDefault()
         this.setState({
@@ -163,16 +202,56 @@ class App extends React.Component {
             totalTakeProfit: 0,
             balance: balanceBeforeTrade,
         },function(){
-            let waitEntry = this.state.firstEntry
-            let analysisData = []
-            this.state.klineData.forEach(candle => {
-                const result = this.entryProcess(waitEntry, candle, analysisData)
-                waitEntry = result.waitEntry
-                analysisData = result.analysisData
-            })
-            this.setState({analysisData: analysisData})
+            if(this.state.tradeMode === tradeMode.scaling) {
+                let waitEntry = this.state.firstEntry
+                let analysisData = []
+                this.state.klineData.forEach(candle => {
+                    const result = this.entryProcess(waitEntry, candle, analysisData)
+                    waitEntry = result.waitEntry
+                    analysisData = result.analysisData
+                })
+                this.setState({analysisData: analysisData})
+            } else if (this.state.tradeMode === tradeMode.tdSequential) {
+                let analysisData = []
+                let currentOrder = {}
+                this.state.klineData.forEach(candle => {
+                    const result = this.tdSequentialEntry(candle, analysisData, currentOrder)
+                    analysisData = result.analysisData
+                    currentOrder = result.currentOrder
+                })
+                this.setState({analysisData: analysisData})
+            }
         })
     }
+
+    switchMode(mode) {
+        this.setState({
+            tradeMode: mode
+        })
+        if(mode === tradeMode.tdSequential) {
+            const tdSequentialResult = TDSequential(this.state.klineData.map(e => {
+                return {
+                    open: e.y[0],
+                    high: e.y[1],
+                    low: e.y[2],
+                    close: e.y[3],
+                }
+            }))
+            const tdSequentialData = this.state.klineData.map((e, index) => {
+                return {
+                    x: e.x,
+                    y: e.y,
+                    indexLabel: tdSequentialResult[index].buySetupIndex ? tdSequentialResult[index].buySetupIndex.toString() : tdSequentialResult[index].sellSetupIndex.toString(),
+                    markerColor: tdSequentialResult[index].buySetupIndex ? 'red' : 'green',
+                    markerType: 'circle'
+                }
+            })
+            this.setState({klineData: tdSequentialData})
+        } else {
+            this.setState({tdSequentialData: []})
+        }
+    }
+
     render() {
         return (
             <div className="App">
@@ -182,7 +261,23 @@ class App extends React.Component {
                             klineData={this.state.klineData}
                             klineName={`${this.state.symbol} - ${this.state.interval}`}
                             analysisData={this.state.analysisData}
+                            tdSequentialData={this.state.tdSequentialData}
                         />
+                        <div className="container">
+                            <Row>
+                                <Col md="12">
+                                    <h4>Logs:</h4>
+                                    {this.state.analysisLog.map(e => <p>{e}</p>)}
+                                </Col>
+                                {/*<Col md="4">*/}
+                                {/*<h4>Result:</h4>*/}
+                                {/*<p>Total profit: {this.state.totalTakeProfit} orders</p>*/}
+                                {/*<p>Total loss: {this.state.totalStopLoss} orders</p>*/}
+                                {/*<p>Balance (before trade): {balanceBeforeTrade} USDT</p>*/}
+                                {/*<p>Balance (after trade + all in): {balanceBeforeTrade} USDT</p>*/}
+                                {/*</Col>*/}
+                            </Row>
+                        </div>
                     </Col>
                     <Col md="2">
                         <Row>
@@ -208,32 +303,56 @@ class App extends React.Component {
                             <Input type="time" name="endTime" onChange={(e) => this.handleChange(e)} value={this.state.endTime} />
                         </Row>
                         <Row>
+                            <Label>Trading mode:</Label>
+                            <ButtonGroup vertical>
+                                <Button onClick={() => this.switchMode(tradeMode.scaling)}>Scaling</Button>
+                                <Button onClick={() => this.switchMode(tradeMode.tdSequential)}>TD Sequential</Button>
+                            </ButtonGroup>
+                        </Row>
+                        <Row>
                             --------------
                         </Row>
-                        <Row>
-                            <Input type="number" name="firstEntry" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.firstEntry} placeholder="Entry (USDT)"/>
-                        </Row>
-                        <Row>
-                            <Input type="select" name="position" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.position}>
-                                <option>LONG</option>
-                                <option>SHORT</option>
-                            </Input>
-                        </Row>
-                        <Row>
-                            <Input type="number" name="rangePercent" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.rangePercent} placeholder="Range (%)"/>
-                        </Row>
+                        {this.state.tradeMode === tradeMode.tdSequential ?
+                            <div>
+                                <Row>
+                                    <Input type="number" name="entrySequential" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.entrySequential} placeholder="Entry at sequential"/>
+                                </Row>
+                            </div>
+                            :
+                            <div>
+                                <Row>
+                                    <Input type="number" name="firstEntry" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.firstEntry} placeholder="Entry (USDT)"/>
+                                </Row>
+                                <Row>
+                                    <Input type="select" name="position" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.position}>
+                                        <option>LONG</option>
+                                        <option>SHORT</option>
+                                    </Input>
+                                </Row>
+                            </div>
+                        }
+                        {this.state.tradeMode === tradeMode.scaling ?
+                            <Row>
+                                <Input type="number" name="rangePercent" onChange={(e) => this.handleChangeAnalysis(e)}
+                                       value={this.state.rangePercent} placeholder="Range (%)"/>
+                            </Row> : ''
+                        }
                         <Row>
                             <Input type="number" name="stopLossPercent" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.stopLossPercent} placeholder="Stop loss (%)"/>
                         </Row>
                         <Row>
                             <Input type="number" name="takeProfitPercent" onChange={(e) => this.handleChangeAnalysis(e)} value={this.state.takeProfitPercent} placeholder="Take profit (%)"/>
                         </Row>
-                        <Row>
-                            <Input name="isAutoReEntry" type="checkbox"
-                                   defaultChecked={this.state.isAutoReEntry}
-                                   onChange={(e) => this.handleChangeCheckBox(e)} />{' '}
-                            Auto re-entry after stop loss
-                        </Row>
+                        {this.state.tradeMode === tradeMode.tdSequential ? '' :
+                            <div>
+                                <Row>
+                                    <Input name="isAutoReEntry" type="checkbox"
+                                           defaultChecked={this.state.isAutoReEntry}
+                                           onChange={(e) => this.handleChangeCheckBox(e)} />{' '}
+                                    Auto re-entry after stop loss
+                                </Row>
+                            </div>
+                        }
                         <Row>
                             <Button onClick={(event) => this.processAnalysis(event)}>Analysis</Button>
                         </Row>
@@ -247,21 +366,7 @@ class App extends React.Component {
                         </Row>}
                     </Col>
                 </Row>
-                <div className="container">
-                    <Row>
-                        <Col md="8">
-                            <h4>Logs:</h4>
-                            {this.state.analysisLog.map(e => <p>{e}</p>)}
-                        </Col>
-                        <Col md="4">
-                            {/*<h4>Result:</h4>*/}
-                            {/*<p>Total profit: {this.state.totalTakeProfit} orders</p>*/}
-                            {/*<p>Total loss: {this.state.totalStopLoss} orders</p>*/}
-                            {/*<p>Balance (before trade): {balanceBeforeTrade} USDT</p>*/}
-                            {/*<p>Balance (after trade + all in): {balanceBeforeTrade} USDT</p>*/}
-                        </Col>
-                    </Row>
-                </div>
+
             </div>
         );
     }

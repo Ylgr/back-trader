@@ -22,17 +22,21 @@ class CandlestickChart extends Component {
             data: [{
                 type: "candlestick",
                 showInLegend: true,
-                indexLabelFontSize: 16,
+                indexLabelFontSize: 10,
                 name: this.props.klineName,
                 yValueFormatString: "$###0.00",
                 xValueFormatString: "MMMM YY",
                 risingColor: "green",
                 fallingColor: "red",
                 dataPoints: this.props.klineData
-            },{
+            }, {
                 type: "line",
                 indexLabelFontSize: 10,
                 dataPoints: this.props.analysisData
+            },{
+                type: "line",
+                indexLabelFontSize: 10,
+                dataPoints: this.props.tdSequentialData
             }]
         }
         return (

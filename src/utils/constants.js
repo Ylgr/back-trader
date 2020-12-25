@@ -30,3 +30,9 @@ export const intervalList = [
 ]
 
 export const balanceBeforeTrade = 1000
+
+export const tradeMode = {
+    normal: 'NORMAL',
+    scaling: 'SCALING',
+    tdSequential: 'TD SEQUENTIAL'
+}
